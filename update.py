@@ -39,7 +39,7 @@ for file in file_list:
     if file.endswith('html'):
         head.insert(0, file.split('.')[0])
         with open(source_dir+file) as f:
-            soup = BeautifulSoup(f, "lxml")
+            soup = BeautifulSoup(f, "html.parser")
             data = json.loads(soup.select('#getAreaStat')[0].text[27:-11])
             province, city = update(province, city, data)
 

@@ -20,17 +20,19 @@ def cat(file,text):
 
 def update(p, c, d):
     for pro in d:
-        if pro['provinceShortName'] not in p:
-            p[pro['provinceShortName']] = defaultdict(list)
+        p_name = pro['provinceShortName']
+        if p_name not in p:
+            p[p_name] = defaultdict(list)
         for k,v in pro.items():
             if type(v) is int:
-                p[pro['provinceShortName']][k].insert(0,v)
+                p[p_name][k].insert(0,v)
         for cit in pro['cities']:
-            if cit['cityName'] not in c:
-                c[cit['cityName']] = defaultdict(list)
+            c_name = cit['cityName']
+            if f'{p_name}_{c_name}' not in c:
+                c[f'{p_name}_{c_name}'] = defaultdict(list)
             for k,v in cit.items():
                 if type(v) is int:
-                    c[cit['cityName']][k].insert(0,v)
+                    c[f'{p_name}_{c_name}'][k].insert(0,v)
     return p,c
 
 for file in file_list:

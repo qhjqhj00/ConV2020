@@ -40,6 +40,8 @@ def to_images(data, t):
         y = list(d.keys())
         x = list(d.values())
         x = [time(t) for t in x]
+        x.insert(0,'')
+        y.insert(0,0)
         a = ''.join(lazy_pinyin(l))
         plot(x,y,t,a)
         

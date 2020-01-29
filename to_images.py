@@ -18,6 +18,8 @@ def plot(x,y,t,a):
     plt.title(a) 
     plt.xlabel("time (month.day.hour)") 
     plt.ylabel(t) 
+    for a, b in zip(x, y):
+        plt.text(a, b, b, ha='center', va='bottom', fontsize=20)
     plt.plot(x,y) 
     if not os.path.exists(picture+f'{a}/'):
         os.mkdir(picture+f'{a}/')
